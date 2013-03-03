@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="ui-mobile"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="Author" content="Rafa Cuestas Rodríguez - http://www.puigverd.org" /> 
+	<title>
+		compassControl for leaftlet
+	</title>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" /> 
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+	<![endif]--> 
+	<!-- Icon design based http://thenounproject.com/noun/compass/?dwn=CCBY&dwn_icon=2639#icon-No2639 -->
+	
+	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+	<script src="Leaflet.compass.js"></script>
+	<link rel="stylesheet" href="leaftlet.compass.css" />
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		html, body, #map {
+			height: 96%;
+			width:100%;
+		}
+		
+	</style>
+</head> 
+<body onload="init()">
+	<div id="map" class="show">
+	</div>
+	<script type="text/javascript">
+	
+    	var map, mapquestOSM;
+
+		
+		function init(){
+			
+		  	// create a map in the "map" div, set the view to a given place and zoom
+			var map = L.map('map').setView([41.77, 1.12], 13);
+			
+			// add an OpenStreetMap tile layer
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo(map);
+			
+			// add a marker in the given location, attach some popup content to it and open the popup
+			L.marker([41.77, 1.12]).addTo(map)
+				.bindPopup('Wuola! k ace?')
+				.openPopup();
+
+			
+			compas = new Compass({position:"topright",icon:"compass.png"});
+			map.addControl( compas );
+			compas.setAngle(0);
+			
+			
+			};
+	</script>
+	<div id="debug">
+	
+	</div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
